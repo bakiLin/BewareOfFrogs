@@ -5,7 +5,7 @@ public class EnemyDetect : MonoBehaviour
 {
     private HealthManager healthManager;
     private bool hit = false;
-    //private int hitCount = 2;
+    private int hitCount;
 
     private void Start()
     {
@@ -14,7 +14,7 @@ public class EnemyDetect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Frog" && hit == false)
+        if (other.tag == "Enemy" && hit == false)
         {
             hit = true;
             StartCoroutine(Cooldown());
@@ -23,15 +23,21 @@ public class EnemyDetect : MonoBehaviour
 
     private IEnumerator Cooldown()
     {
+        hitCount++;
         healthManager.Hit();
-        var fading = gameObject.GetComponent<Fade>();
-        for (int i = 0; i < 2; i++)
+
+        if (hitCount != 3)
         {
-            fading.FadeOut(0.75f);
-            yield return new WaitForSeconds(0.75f);
-            fading.FadeIn(0.75f);
-            yield return new WaitForSeconds(0.75f);
+            var fading = gameObject.GetComponent<Fade>();
+            for (int i = 0; i < 5; i++)
+            {
+                fading.FadeOut(0.3f);
+                yield return new WaitForSeconds(0.3f);
+                fading.FadeIn(0.3f);
+                yield return new WaitForSeconds(0.3f);
+            }
+
+            hit = false;
         }
-        hit = false;
     }
 }

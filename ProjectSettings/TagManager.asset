@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Delete_Border
-  - Spawn_Border
-  - Swamp
-  - Coast
-  - Frog
+  - Tile
+  - Enemy
   layers:
   - Default
   - TransparentFX

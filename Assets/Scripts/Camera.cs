@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    private GameObject player;
-    private Vector3 offset; 
+    [SerializeField] Transform player;
 
-    public void GetPlayerPos()
+    private Vector3 offset;
+
+    private void Start()
     {
-        player = GameObject.Find("Player_Spawn");
-        offset = player.transform.position - transform.position;
+        offset = player.position - transform.position;
     }
 
     private void LateUpdate()
     {
-        if (player != null)
-            transform.position = player.transform.position - offset;
+        transform.position = player.position - offset;
     }
 }

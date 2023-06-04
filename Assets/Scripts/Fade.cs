@@ -27,5 +27,5 @@ public class Fade : MonoBehaviour
 
     public void FadeIn(float duration) => ObjectFade(1, duration);
 
-    public void FadeOut(float duration) => ObjectFade(0, duration);
+    public void FadeOut(float duration) => ObjectFade(.3f, duration);
 }
